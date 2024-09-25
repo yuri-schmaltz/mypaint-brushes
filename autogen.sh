@@ -7,9 +7,9 @@
 # tools and you shouldn't use this script. Just call ./configure
 # directly.
 
-ACLOCAL=${ACLOCAL-aclocal-1.16}
+ACLOCAL=${ACLOCAL-aclocal}
 AUTOCONF=${AUTOCONF-autoconf}
-AUTOMAKE=${AUTOMAKE-automake-1.16}
+AUTOMAKE=${AUTOMAKE-automake}
 
 AUTOCONF_REQUIRED_VERSION=2.62
 AUTOMAKE_REQUIRED_VERSION=1.13
@@ -90,6 +90,9 @@ fi
 echo -n "checking for automake >= $AUTOMAKE_REQUIRED_VERSION ... "
 if ($AUTOMAKE --version) < /dev/null > /dev/null 2>&1; then
    AUTOMAKE=$AUTOMAKE
+elif (automake-1.17 --version) < /dev/null > /dev/null 2>&1; then
+   AUTOMAKE=automake-1.17
+   ACLOCAL=aclocal-1.17
 elif (automake-1.16 --version) < /dev/null > /dev/null 2>&1; then
    AUTOMAKE=automake-1.16
    ACLOCAL=aclocal-1.16
